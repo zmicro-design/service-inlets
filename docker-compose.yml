@@ -7,7 +7,6 @@ services:
       - 0.0.0.0:${SERVICE_INLETS_DATA_PORT}:8443
     command: inlets server -s -c /etc/inlets/server.yaml
     volumes:
-      - ${SERVICE_INLETS_DATA_HOME}:/data
       - ${SERVICE_CONFIGS}/config.yaml:/etc/inlets/server.yaml
       
 networks:

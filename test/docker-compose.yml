@@ -1,0 +1,13 @@
+services:
+  inlets:
+    restart: always
+    image: whatwewant/inlets:${SERVICE_INLETS_IMAGE_VERSION}
+    environment:
+      PORT: $SERVICE_INLETS_PORT
+      USERNAME: ${SERVICE_INLETS_USERNAME}
+      PASSWORD: ${SERVICE_INLETS_PASSWORD}
+      
+networks:
+  default:
+    external: true
+    name: compose-ingress

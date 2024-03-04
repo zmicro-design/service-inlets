@@ -1,0 +1,22 @@
+#!/bin/bash
+
+service::config_set() {
+  config::check_or_set $1 $2 $SERVICE_CONFIG "${@:3}"
+}
+
+check() {
+  if [ "$DEBUG" = "true" ]; then
+    log::info "[DEBUG][service]: $SERVICE_CONFIG"
+    cat $SERVICE_CONFIG
+  fi
+
+  if [ ! -f "$SERVICE_CONFIGS/config.yaml" ]; then
+    cp $SERVICE_DIR/conf/config.yaml $SERVICE_CONFIGS/config.yaml
+    log::info "Copied default config to $SERVICE_CONFIGS/config.yaml"
+  fi
+
+  service::config_set SERVICE_INLETS_WEB_PORT text "Web Port" 8080
+  service::config_set SERVICE_INLETS_DATA_PORT text "Data Port" 8443
+}
+
+check $@

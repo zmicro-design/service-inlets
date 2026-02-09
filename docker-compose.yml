@@ -1,7 +1,7 @@
 services:
   inlets:
     restart: always
-    image: whatwewant/inlets:${SERVICE_INLETS_IMAGE_VERSION}
+    image: ${SERVICE_IMAGE_REGISTRY}/whatwewant/go-idp-inlets:${SERVICE_INLETS_IMAGE_VERSION}
     ports:
       - 0.0.0.0:${SERVICE_INLETS_WEB_PORT}:8080
       - 0.0.0.0:${SERVICE_INLETS_DATA_PORT}:8443
